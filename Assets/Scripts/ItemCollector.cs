@@ -7,6 +7,7 @@ public class ItemCollector : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI cherriesText;
     private int cherries = 0;
+    [SerializeField] private AudioSource collectSound;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Cherry"))
@@ -15,6 +16,7 @@ public class ItemCollector : MonoBehaviour
             cherries++;
             Debug.Log($"Player collected a cherry, cherries counter: {this.cherries}");
             cherriesText.text = $"Cherries: {this.cherries}";
+            collectSound.Play();
         }
     }
 }
